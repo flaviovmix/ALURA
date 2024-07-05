@@ -1,27 +1,13 @@
-public class Filme {
-    String nome;
-    int anoDeLancamento;
-    boolean incluidoNoPlano;
-    private double somaDasAvaliacaco;
-    private int totalDeAvaliacoes;
-    int duracaoEmMinutos;
+package br.com.alura.screenmatch.modelos;
 
-    int getTotalDeAvaliacoes() {
-        return totalDeAvaliacoes;
+public class Filme extends Titulo{
+    private String diretor;
+
+    public String getDiretor() {
+        return diretor;
     }
 
-    void exibeFichaTecnica() {
-        System.out.println("Nome do Filme: " + nome);
-        System.out.println("Ano de Lançamento: " + anoDeLancamento);
-        System.out.println("Duração em minutos: " + duracaoEmMinutos);
-    }
-
-    void avalia(double nota) {
-        somaDasAvaliacaco += nota;
-        totalDeAvaliacoes++;
-    }
-
-    double pegaMedia() {
-        return somaDasAvaliacaco/totalDeAvaliacoes;
+    public void setDiretor(String diretor) {
+        this.diretor = diretor;
     }
 }
