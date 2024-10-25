@@ -1,6 +1,9 @@
 package br.com.alura.screenmatch.modelos;
 
-public class Titulo {
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class Titulo implements Comparable<Titulo>{
     private String nome;
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
@@ -44,6 +47,14 @@ public class Titulo {
         this.duracaoEmMinutos = duracaoEmMinutos;
     }
 
+    public Titulo() {
+    }
+
+    public Titulo(String nome, int anoDeLancamento) {
+        this.nome = nome;
+        this.anoDeLancamento = anoDeLancamento;
+    }
+
     public void exibeFichaTecnica(){
         System.out.println("Nome do filme: " + nome);
         System.out.println("Ano de lançamento: " + anoDeLancamento);
@@ -55,6 +66,18 @@ public class Titulo {
     }
 
     public double pegaMedia(){
-        return somaDasAvaliacoes / totalDeAvaliacoes;
+        if (totalDeAvaliacoes == 0) {
+            return 0; // Retorna 0 se não houver avaliações
+        }
+
+        double media = somaDasAvaliacoes / totalDeAvaliacoes;
+        // Arredonda para 2 casas decimais
+        BigDecimal bd = new BigDecimal(media).setScale(1, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
+    @Override
+    public int compareTo(Titulo outroTitulo) {
+        return this.getNome().compareTo(outroTitulo.getNome());
     }
 }

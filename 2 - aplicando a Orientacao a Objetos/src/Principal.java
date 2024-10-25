@@ -46,14 +46,19 @@ public class Principal {
 
         FiltroRecomendacao filtro = new FiltroRecomendacao();
 
+        System.out.print(meuFilme.getNome());
+        System.out.print(" - ");
         filtro.filtra(meuFilme);
 
         Episodio episodio = new Episodio();
+        episodio.setNome("A ilha perdida");
         episodio.setNumero(1);
         episodio.setSerie(lost);
 
         episodio.setTotalVisualizacoes(300);
 
+        System.out.print(episodio.getNome());
+        System.out.print(" - ");
         filtro.filtra(episodio);
 
     }
